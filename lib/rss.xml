@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[foundation]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib/media/favicon.png</url><title>foundation</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Tue, 18 Feb 2025 05:27:33 GMT</lastBuildDate><atom:link href="lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 18 Feb 2025 05:27:27 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[FAST API]]></title><description><![CDATA[ 
+ <br>Easy to Learn<br>
+Fast Development<br>
+Highly Performant - Async <br>uv install fastapi<br>
+uv install uvicorn <br>
+[server - for running and testing ]<br>Quick run in first create a folder app with <br>uv init highwaymen<br>a folder called highwaymen is created<br>
+probably with an hello.py file you can delete it and create a python file of your own and  create a simple fast api endpoint. leveler.py is your file<br>from fastapi import FastAPI
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+return {"Big ": "Levels"}
+<br>this runs the<br>
+uvicorn leveler:app --reload<br>
+<img alt="Screenshot 2025-02-17 at 11.24.58 AM.png" src="screenshot-2025-02-17-at-11.24.58-am.png"><br>
+I ran into some problems -- about the port being occupied - I freed the default port by<br><br>``1. Find the process using port&nbsp;8080`:<br>sudo lsof -i:8000
+<br>
+<br>Kill the process on that port:
+<br>kill $PID
+
+kill -9 $PID  //to forcefully kill the port
+<br>```
+<br><br>creating routes or url endpoints <br>An api needs an essential way of adding things to it, this is very basic api stuff, like adding a song url to a playlist in spotify. <br>@app.post('/items')
+
+def create_item(item: str):
+
+items.append(item)
+
+return items
+<br>to test this we have to send a post request in our terminal using cURL<br>curl -X POST -H "Content-Type:application/json" 'http://127.
+0.0.1:8000/items?item=apple'
+<br>now we have an item added to the items list <br>curl -X POST -H "Content-Type:application/json" 'http://127.
+0.0.1:8000/items?item=orange'
+<br>now we can add a get endpoint to chec the items<br>@app.get('/items/{item_id}')
+
+def get_item(item_id:int)-&gt; str:
+
+item= items[item_id]
+
+return item
+<br>curl -X GET 'http://127.0.0.1:8000/items/0'
+<br>actually the server reruns after how get implementation re-add items ebfore running get command and you should be able to return what we have saved - apples and oranges. <br><br>exception handing<br>
+this can be done by importing HTTPException from fastaspi<br>
+An error is raised into the terminal and no returned \<br>@app.get('/items/{item_id}')
+def get_item(item_id:int)-&gt; str:
+if item_id &lt; len(items):
+	return items[item_id]
+else:
+	raise HTTPException(status_code=404, detail="Item not found")
+<br><br>Pydantic will be used as based for this defining structure etc <br>from pydantic import BaseModel<br>
+we define the item by things it can contain <br>class Item(BaseModel):
+
+	text: str
+	is_done: bool = False
+<br>going back to our previous structure the item is no longer of the type string --<br>
+it will be of the type of this new class -- that contains multiple formats in a defined way.<br>All we need to add this functionality is to make sure the type is changed in post and get<br>
+also the query needed to post and get might become different.<br>
+For post you have to post the item <br>curl -X POST -H "Content-Type: application/json" -d '{"text":"apple"}' 'http://127.0.0.1/900/items'
+<br>this returns a json object<br>
+[{"text":"apple","is_done":false}]<br><br>response model parameter is a way we ensure the returns are consitent like when using for front end to do this we add the response model decorator to both functions <br>@app.get('/items',response_model=list[Item])
+def list_item(limit: int=10):
+	return items[0:limit]
+
+  
+@app.get('/items/{item_id}', response_model=Item)
+def get_item(item_id:int)-&gt; Item:
+	if item_id &lt; len(items):
+	return items[item_id]
+	else:
+		raise HTTPException(status_code=404, detail="Item not found")
+<br>meaning when we go to the url -- /items we see a list of Item objects.<br><br>On the docs page you get an interactive page to test your api out --<br>
+using all the endpoints you've created and allowing you to manipulate variables.<br>Here I test out the get item by item_id endpoint -- and we see a successful output.<br>
+this can be exposed as a page on your website for devs to understand your workflow.<br><img alt="Screenshot 2025-02-17 at 8.59.36 PM.png" src="screenshot-2025-02-17-at-8.59.36-pm.png">]]></description><link>fast-api.html</link><guid isPermaLink="false">FAST API.md</guid><pubDate>Tue, 18 Feb 2025 03:00:25 GMT</pubDate><enclosure url="screenshot-2025-02-17-at-11.24.58-am.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;screenshot-2025-02-17-at-11.24.58-am.png&quot;&gt;&lt;/figure&gt;</content:encoded></item></channel></rss>
