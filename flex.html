@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Screen Bio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .left-side {
+            flex: 1;
+            position: relative;
+            background: url('img/omenabides.jpeg')center center no-repeat  ;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay-text {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .right-side {
+            flex: 1;
+            background-color: #4C5850;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bio {
+            font-size: 16px;
+            line-height: 1.5;
+            max-width: 540px;
+            padding-top: 25vh; /* Pushes bio down about 1/3 of the viewport height */
+        }
+
+        .nav-links {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 30px; /* Reduced space between bio and nav */
+        }
+
+        .nav-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            color: white;
+            text-decoration: none;
+            font-family: 'Space Mono', monospace;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link:hover {
+            opacity: 0.8;
+        }
+
+        .social-icons {
+            margin-top: 20px; /* Reduced space between nav and social icons */
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .social-icon:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="overlay-text">The Omen Abides.</div>
+        </div>
+        <div class="right-side">
+            <div class="bio">
+                I am Femi Adeniran, a machine learning engineer, technologist, futurist, and artist, driven by an insatiable curiosity to explore and experiment. My journey blends technology's precision with the boundless reach of art, delving into the foundations of thought. This blog is my canvas—Here, I bridge disciplines, bring abstract concepts to light, and chart paths through structured analysis and creative inquiry in the pursuit of the truth, insight and inspiration.
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link">
+                    My Blog
+                    <span>→</span>
+                </a>
+                <a href="#" class="nav-link">
+                    Photography
+                    <span>→</span>
+                </a>
+                <a href="#" class="nav-link">
+                    Experiments
+                    <span>→</span>
+                </a>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
